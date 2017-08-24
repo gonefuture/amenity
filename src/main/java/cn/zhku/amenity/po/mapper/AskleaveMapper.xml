@@ -8,11 +8,15 @@
     <result column="yb_collegename" property="ybCollegename" jdbcType="VARCHAR" />
     <result column="yb_classname" property="ybClassname" jdbcType="VARCHAR" />
     <result column="yb_studentid" property="ybStudentid" jdbcType="VARCHAR" />
+    <result column="leave_type" property="leaveType" jdbcType="INTEGER" />
     <result column="yb_employid" property="ybEmployid" jdbcType="DATE" />
     <result column="state" property="state" jdbcType="INTEGER" />
     <result column="since_time" property="sinceTime" jdbcType="DATE" />
     <result column="end_time" property="endTime" jdbcType="DATE" />
     <result column="leave_time" property="leaveTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.zhku.amenity.po.entity.Askleave" extends="BaseResultMap" >
+    <result column="reason" property="reason" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -73,9 +77,28 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, yb_realname, yb_schoolname, yb_collegename, yb_classname, yb_studentid, yb_employid, 
-    state, since_time, end_time, leave_time
+    id, yb_realname, yb_schoolname, yb_collegename, yb_classname, yb_studentid, leave_type, 
+    yb_employid, state, since_time, end_time, leave_time
   </sql>
+  <sql id="Blob_Column_List" >
+    reason
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="cn.zhku.amenity.po.entity.AskleaveExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from askleave
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.zhku.amenity.po.entity.AskleaveExample" >
     select
     <if test="distinct" >
@@ -90,9 +113,11 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from askleave
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -109,12 +134,14 @@
   <insert id="insert" parameterType="cn.zhku.amenity.po.entity.Askleave" >
     insert into askleave (id, yb_realname, yb_schoolname, 
       yb_collegename, yb_classname, yb_studentid, 
-      yb_employid, state, since_time, 
-      end_time, leave_time)
+      leave_type, yb_employid, state, 
+      since_time, end_time, leave_time, 
+      reason)
     values (#{id,jdbcType=INTEGER}, #{ybRealname,jdbcType=VARCHAR}, #{ybSchoolname,jdbcType=VARCHAR}, 
       #{ybCollegename,jdbcType=VARCHAR}, #{ybClassname,jdbcType=VARCHAR}, #{ybStudentid,jdbcType=VARCHAR}, 
-      #{ybEmployid,jdbcType=DATE}, #{state,jdbcType=INTEGER}, #{sinceTime,jdbcType=DATE}, 
-      #{endTime,jdbcType=DATE}, #{leaveTime,jdbcType=TIMESTAMP})
+      #{leaveType,jdbcType=INTEGER}, #{ybEmployid,jdbcType=DATE}, #{state,jdbcType=INTEGER}, 
+      #{sinceTime,jdbcType=DATE}, #{endTime,jdbcType=DATE}, #{leaveTime,jdbcType=TIMESTAMP}, 
+      #{reason,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.zhku.amenity.po.entity.Askleave" >
     insert into askleave
@@ -137,6 +164,9 @@
       <if test="ybStudentid != null" >
         yb_studentid,
       </if>
+      <if test="leaveType != null" >
+        leave_type,
+      </if>
       <if test="ybEmployid != null" >
         yb_employid,
       </if>
@@ -151,6 +181,9 @@
       </if>
       <if test="leaveTime != null" >
         leave_time,
+      </if>
+      <if test="reason != null" >
+        reason,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -172,6 +205,9 @@
       <if test="ybStudentid != null" >
         #{ybStudentid,jdbcType=VARCHAR},
       </if>
+      <if test="leaveType != null" >
+        #{leaveType,jdbcType=INTEGER},
+      </if>
       <if test="ybEmployid != null" >
         #{ybEmployid,jdbcType=DATE},
       </if>
@@ -186,6 +222,9 @@
       </if>
       <if test="leaveTime != null" >
         #{leaveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -216,6 +255,9 @@
       <if test="record.ybStudentid != null" >
         yb_studentid = #{record.ybStudentid,jdbcType=VARCHAR},
       </if>
+      <if test="record.leaveType != null" >
+        leave_type = #{record.leaveType,jdbcType=INTEGER},
+      </if>
       <if test="record.ybEmployid != null" >
         yb_employid = #{record.ybEmployid,jdbcType=DATE},
       </if>
@@ -231,7 +273,29 @@
       <if test="record.leaveTime != null" >
         leave_time = #{record.leaveTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.reason != null" >
+        reason = #{record.reason,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update askleave
+    set id = #{record.id,jdbcType=INTEGER},
+      yb_realname = #{record.ybRealname,jdbcType=VARCHAR},
+      yb_schoolname = #{record.ybSchoolname,jdbcType=VARCHAR},
+      yb_collegename = #{record.ybCollegename,jdbcType=VARCHAR},
+      yb_classname = #{record.ybClassname,jdbcType=VARCHAR},
+      yb_studentid = #{record.ybStudentid,jdbcType=VARCHAR},
+      leave_type = #{record.leaveType,jdbcType=INTEGER},
+      yb_employid = #{record.ybEmployid,jdbcType=DATE},
+      state = #{record.state,jdbcType=INTEGER},
+      since_time = #{record.sinceTime,jdbcType=DATE},
+      end_time = #{record.endTime,jdbcType=DATE},
+      leave_time = #{record.leaveTime,jdbcType=TIMESTAMP},
+      reason = #{record.reason,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -244,6 +308,7 @@
       yb_collegename = #{record.ybCollegename,jdbcType=VARCHAR},
       yb_classname = #{record.ybClassname,jdbcType=VARCHAR},
       yb_studentid = #{record.ybStudentid,jdbcType=VARCHAR},
+      leave_type = #{record.leaveType,jdbcType=INTEGER},
       yb_employid = #{record.ybEmployid,jdbcType=DATE},
       state = #{record.state,jdbcType=INTEGER},
       since_time = #{record.sinceTime,jdbcType=DATE},
@@ -271,6 +336,9 @@
       <if test="ybStudentid != null" >
         yb_studentid = #{ybStudentid,jdbcType=VARCHAR},
       </if>
+      <if test="leaveType != null" >
+        leave_type = #{leaveType,jdbcType=INTEGER},
+      </if>
       <if test="ybEmployid != null" >
         yb_employid = #{ybEmployid,jdbcType=DATE},
       </if>
@@ -286,7 +354,26 @@
       <if test="leaveTime != null" >
         leave_time = #{leaveTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="reason != null" >
+        reason = #{reason,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.zhku.amenity.po.entity.Askleave" >
+    update askleave
+    set yb_realname = #{ybRealname,jdbcType=VARCHAR},
+      yb_schoolname = #{ybSchoolname,jdbcType=VARCHAR},
+      yb_collegename = #{ybCollegename,jdbcType=VARCHAR},
+      yb_classname = #{ybClassname,jdbcType=VARCHAR},
+      yb_studentid = #{ybStudentid,jdbcType=VARCHAR},
+      leave_type = #{leaveType,jdbcType=INTEGER},
+      yb_employid = #{ybEmployid,jdbcType=DATE},
+      state = #{state,jdbcType=INTEGER},
+      since_time = #{sinceTime,jdbcType=DATE},
+      end_time = #{endTime,jdbcType=DATE},
+      leave_time = #{leaveTime,jdbcType=TIMESTAMP},
+      reason = #{reason,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.zhku.amenity.po.entity.Askleave" >
@@ -296,6 +383,7 @@
       yb_collegename = #{ybCollegename,jdbcType=VARCHAR},
       yb_classname = #{ybClassname,jdbcType=VARCHAR},
       yb_studentid = #{ybStudentid,jdbcType=VARCHAR},
+      leave_type = #{leaveType,jdbcType=INTEGER},
       yb_employid = #{ybEmployid,jdbcType=DATE},
       state = #{state,jdbcType=INTEGER},
       since_time = #{sinceTime,jdbcType=DATE},

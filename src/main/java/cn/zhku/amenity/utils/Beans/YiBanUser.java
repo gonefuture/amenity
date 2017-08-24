@@ -6,17 +6,17 @@ package cn.zhku.amenity.utils.Beans;
  * @E-mail gonefuture@qq.com
  */
 public class YiBanUser {
-    String yb_userid ;
-    String yb_realname ;
-    String yb_schoolid ;
-    String yb_schoolname ;
-    String yb_collegename ;
-    String yb_classname ;
-    String yb_enteryear;
-    String yb_studentid ;
-    String yb_examid ;
-    String yb_admissionid ;
-    String yb_employid ;
+    private String yb_userid ;
+    private String yb_realname ;
+    private String yb_schoolid ;
+    private String yb_schoolname ;
+    private String yb_collegename ;
+    private String yb_classname ;
+    private String yb_enteryear;
+    private String yb_studentid ;
+    private String yb_examid ;
+    private String yb_admissionid ;
+    private String yb_employid ;
 
     public String getYb_userid() {
         return yb_userid;

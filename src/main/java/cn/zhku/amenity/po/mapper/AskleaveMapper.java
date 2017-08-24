@@ -16,15 +16,21 @@ public interface AskleaveMapper {
 
     int insertSelective(Askleave record);
 
+    List<Askleave> selectByExampleWithBLOBs(AskleaveExample example);
+
     List<Askleave> selectByExample(AskleaveExample example);
 
     Askleave selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") Askleave record, @Param("example") AskleaveExample example);
 
+    int updateByExampleWithBLOBs(@Param("record") Askleave record, @Param("example") AskleaveExample example);
+
     int updateByExample(@Param("record") Askleave record, @Param("example") AskleaveExample example);
 
     int updateByPrimaryKeySelective(Askleave record);
+
+    int updateByPrimaryKeyWithBLOBs(Askleave record);
 
     int updateByPrimaryKey(Askleave record);
 }

@@ -542,6 +542,66 @@ public class AskleaveExample {
             return (Criteria) this;
         }
 
+        public Criteria andLeaveTypeIsNull() {
+            addCriterion("leave_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLeaveTypeIsNotNull() {
+            addCriterion("leave_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLeaveTypeEqualTo(Integer value) {
+            addCriterion("leave_type =", value, "leaveType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLeaveTypeNotEqualTo(Integer value) {
+            addCriterion("leave_type <>", value, "leaveType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLeaveTypeGreaterThan(Integer value) {
+            addCriterion("leave_type >", value, "leaveType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLeaveTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("leave_type >=", value, "leaveType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLeaveTypeLessThan(Integer value) {
+            addCriterion("leave_type <", value, "leaveType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLeaveTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("leave_type <=", value, "leaveType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLeaveTypeIn(List<Integer> values) {
+            addCriterion("leave_type in", values, "leaveType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLeaveTypeNotIn(List<Integer> values) {
+            addCriterion("leave_type not in", values, "leaveType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLeaveTypeBetween(Integer value1, Integer value2) {
+            addCriterion("leave_type between", value1, value2, "leaveType");
+            return (Criteria) this;
+        }
+
+        public Criteria andLeaveTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("leave_type not between", value1, value2, "leaveType");
+            return (Criteria) this;
+        }
+
         public Criteria andYbEmployidIsNull() {
             addCriterion("yb_employid is null");
             return (Criteria) this;

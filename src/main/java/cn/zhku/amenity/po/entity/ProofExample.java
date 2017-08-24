@@ -514,6 +514,76 @@ public class ProofExample {
             return (Criteria) this;
         }
 
+        public Criteria andYbStudentidIsNull() {
+            addCriterion("yb_studentid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andYbStudentidIsNotNull() {
+            addCriterion("yb_studentid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andYbStudentidEqualTo(String value) {
+            addCriterion("yb_studentid =", value, "ybStudentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andYbStudentidNotEqualTo(String value) {
+            addCriterion("yb_studentid <>", value, "ybStudentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andYbStudentidGreaterThan(String value) {
+            addCriterion("yb_studentid >", value, "ybStudentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andYbStudentidGreaterThanOrEqualTo(String value) {
+            addCriterion("yb_studentid >=", value, "ybStudentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andYbStudentidLessThan(String value) {
+            addCriterion("yb_studentid <", value, "ybStudentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andYbStudentidLessThanOrEqualTo(String value) {
+            addCriterion("yb_studentid <=", value, "ybStudentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andYbStudentidLike(String value) {
+            addCriterion("yb_studentid like", value, "ybStudentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andYbStudentidNotLike(String value) {
+            addCriterion("yb_studentid not like", value, "ybStudentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andYbStudentidIn(List<String> values) {
+            addCriterion("yb_studentid in", values, "ybStudentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andYbStudentidNotIn(List<String> values) {
+            addCriterion("yb_studentid not in", values, "ybStudentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andYbStudentidBetween(String value1, String value2) {
+            addCriterion("yb_studentid between", value1, value2, "ybStudentid");
+            return (Criteria) this;
+        }
+
+        public Criteria andYbStudentidNotBetween(String value1, String value2) {
+            addCriterion("yb_studentid not between", value1, value2, "ybStudentid");
+            return (Criteria) this;
+        }
+
         public Criteria andYbEmployidIsNull() {
             addCriterion("yb_employid is null");
             return (Criteria) this;

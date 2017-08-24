@@ -13,6 +13,8 @@ public class Proof {
 
     private String ybEnteryear;
 
+    private String ybStudentid;
+
     private String ybEmployid;
 
     private String address;
@@ -67,6 +69,14 @@ public class Proof {
 
     public void setYbEnteryear(String ybEnteryear) {
         this.ybEnteryear = ybEnteryear == null ? null : ybEnteryear.trim();
+    }
+
+    public String getYbStudentid() {
+        return ybStudentid;
+    }
+
+    public void setYbStudentid(String ybStudentid) {
+        this.ybStudentid = ybStudentid == null ? null : ybStudentid.trim();
     }
 
     public String getYbEmployid() {

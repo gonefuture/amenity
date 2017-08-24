@@ -15,6 +15,8 @@ public class Askleave {
 
     private String ybStudentid;
 
+    private Integer leaveType;
+
     private Date ybEmployid;
 
     private Integer state;
@@ -24,6 +26,8 @@ public class Askleave {
     private Date endTime;
 
     private Date leaveTime;
+
+    private String reason;
 
     public Integer getId() {
         return id;
@@ -73,6 +77,14 @@ public class Askleave {
         this.ybStudentid = ybStudentid == null ? null : ybStudentid.trim();
     }
 
+    public Integer getLeaveType() {
+        return leaveType;
+    }
+
+    public void setLeaveType(Integer leaveType) {
+        this.leaveType = leaveType;
+    }
+
     public Date getYbEmployid() {
         return ybEmployid;
     }
@@ -111,5 +123,13 @@ public class Askleave {
 
     public void setLeaveTime(Date leaveTime) {
         this.leaveTime = leaveTime;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason == null ? null : reason.trim();
     }
 }
