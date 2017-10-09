@@ -31,17 +31,16 @@ public class AskleaveController {
 
     @RequestMapping("askleave/apply")
     @ResponseBody
-    public Message leaveApply (String phone, String since , String end, HttpSession httpSession) throws ParseException {
+    public Message leaveApply (Askleave askleave, String since , String end, HttpSession httpSession) throws ParseException {
         YiBanUser yiBanUser = (YiBanUser) httpSession.getAttribute("yiBanUser");
-        Askleave askleave = new Askleave();
         askleave.setSinceTime(DateUtil.parse(since)); askleave.setEndTime(DateUtil.parse(end));
         askleave.setYbCollegename(yiBanUser.getYb_collegename()); askleave.setYbClassname(yiBanUser.getYb_classname());
         askleave.setYbStudentid(yiBanUser.getYb_studentid()); askleave.setYbRealname(yiBanUser.getYb_realname());
         askleave.setState(1);
         if (askleaveService.add(askleave) == 1) {
-            return new Message("1","审核申请成功");
+            return new Message("1","申请成功");
         } else
-            return new Message("2","审核申请失败");
+            return new Message("2","申请失败");
     }
 
 
@@ -60,7 +59,7 @@ public class AskleaveController {
     @ResponseBody
     public PageInfo<Askleave> studentLeave (Query query, Askleave askleave, HttpSession httpSession) {
         YiBanUser yiBanUser = (YiBanUser) httpSession.getAttribute("yiBanUser");
-        askleave.setYbStudentid(yiBanUser.getYb_studentid());
+        askleave.setYbEmployid(yiBanUser.getYb_employid());
         PageHelper.startPage(query.getPageNum(),query.getPageSize());
 
         return  new PageInfo<Askleave> (askleaveService.findList(askleave));
@@ -69,9 +68,11 @@ public class AskleaveController {
 
     @RequestMapping("askleave/audit")
     @ResponseBody
-    public Message leaveAudit(String id , String state) {
+    public Message leaveAudit(String id , String state,HttpSession httpSession) {
+        YiBanUser yiBanUser = (YiBanUser) httpSession.getAttribute("yiBanUser");
         Askleave askleave = new Askleave();
         askleave.setId(Integer.valueOf(id));
+        askleave.setYbEmployid(yiBanUser.getYb_employid());
         askleave.setState(Integer.valueOf(state));
         if (askleaveService.update(askleave) == 1 && Integer.valueOf(state) == 2) {
             return new Message("1","批准请假");

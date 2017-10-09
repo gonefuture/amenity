@@ -1,49 +1,30 @@
-function impower() {
-    $.ajax({
-        type:"get",
-        url:"/amenity/auth",
-        dataType : "json",
-        data: {'yb_userid':"878787",
-			    'yb_realname':"张三",
-			    'yb_schoolid':"111111",
-			    'yb_schoolname':"仲恺农业工程学院",
-			    'yb_collegename':"信息科学与技术学院",
-			    'yb_classname':"计算机154",
-			    'yb_enteryear':"2015",
-			    'yb_studentid':"201510224499",
-			    'yb_examid':"",
-			    'yb_admissionid':"",
-			    'yb_employid':""},
-        success : function(data, textStatus){
-          alert("授权成功");
-        },
-        error : function(xhr, status, errMsg) {
-            alert("授权失败");
-        }
-    });
+/**
+ * Created by Administrator on 2017/8/8 0008.
+ * 仅仅用来测试仅仅用来测试仅仅用来测试仅仅用来测试仅仅用来测试仅仅用来测试
+ * 仅仅用来测试仅仅用来测试仅仅用来测试仅仅用来测试仅仅用来测试仅仅用来测试
+ *
+ * 仅仅用来测试仅仅用来测试仅仅用来测试仅仅用来测试仅仅用来测试仅仅用来测试
+ * 仅仅用来测试仅仅用来测试仅仅用来测试仅仅用来测试仅仅用来测试仅仅用来测试
+ */
+function addParameter() {
+    var userId= getUrlParam("userId");
+    var zone=getUrlParam("zone");
+    $(".home a").attr("href",($(".home a").attr("href")+"?userId="+userId+"&zone="+zone));
+    $("#order .a a").attr("href",($("#order .a a").attr("href")+"&userId="+userId+"&zone="+zone));
+    $("#order .b a").attr("href",($("#order .b a").attr("href")+"&userId="+userId+"&zone="+zone));
+    $("#order .c a").attr("href",($("#order .c a").attr("href")+"&userId="+userId+"&zone="+zone));
+    $("#modify a").attr("href",($("#modify a").attr("href")+"&userId="+userId+"&zone="+zone));
 }
 
-function teacherTest() {
-    $.ajax({
-        type:"get",
-        url:"/amenity/auth",
-        dataType : "json",
-        data: {'yb_userid':"5244708",
-			    'yb_realname':"吴四",
-			    'yb_schoolid':"22222",
-			    'yb_schoolname':"仲恺农业工程学院",
-			    'yb_collegename':"信息科学与技术学院",
-			    'yb_classname':"",
-			    'yb_enteryear':"",
-			    'yb_studentid':"",
-			    'yb_examid':"",
-			    'yb_admissionid':"",
-			    'yb_employid':"206068"},
-        success : function(data, textStatus){
-          alert("授权成功");
-        },
-        error : function(xhr, status, errMsg) {
-            alert("授权失败");
-        }
-    });
+
+function getUrlParam(name){
+    //构造一个含有目标参数的正则表达式对象
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    //匹配目标参数
+    var r = window.location.search.substr(1).match(reg);
+    //返回参数值
+    if (r!=null) {
+        return unescape(r[2]);
+    }
+    return null;
 }

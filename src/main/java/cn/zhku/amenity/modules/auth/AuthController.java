@@ -24,20 +24,33 @@ import java.io.IOException;
 @Controller
 public class AuthController {
     @RequestMapping("auth")
-    @ResponseBody
-    public Message auth (Model model, HttpServletRequest request, HttpServletResponse response , HttpSession httpSession) throws IOException {
+
+    public String auth (Model model, HttpServletRequest request, HttpServletResponse response , HttpSession httpSession) throws IOException {
         YiBanUser yiBanUser = YiBanAuth.verifyMe(request,response);
 
-        System.out.println(yiBanUser);
+        System.out.println("session数据"+yiBanUser);
 
         httpSession.setAttribute("yiBanUser",yiBanUser);
-        return new Message("1","成功登录");
+
+        if ( yiBanUser.getYb_studentid().trim().isEmpty()) {
+            return "redirect:teacher/index.html";
+        } else {
+            return "redirect:student/index.html";
+        }
+
+    }
+
+    @RequestMapping("getuser")
+    @ResponseBody
+    public YiBanUser getUser (HttpSession httpSession) {
+       return (YiBanUser) httpSession.getAttribute("yiBanUser");
+
     }
 
 //    @RequestMapping("index")
 //    @ResponseBody
 //    public String index() {
-//        return "index";
+//        return "rediindex";
 //    }
 
 

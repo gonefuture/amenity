@@ -17,7 +17,7 @@ public class Askleave {
 
     private Integer leaveType;
 
-    private Date ybEmployid;
+    private String ybEmployid;
 
     private Integer state;
 
@@ -85,12 +85,12 @@ public class Askleave {
         this.leaveType = leaveType;
     }
 
-    public Date getYbEmployid() {
+    public String getYbEmployid() {
         return ybEmployid;
     }
 
-    public void setYbEmployid(Date ybEmployid) {
-        this.ybEmployid = ybEmployid;
+    public void setYbEmployid(String ybEmployid) {
+        this.ybEmployid = ybEmployid == null ? null : ybEmployid.trim();
     }
 
     public Integer getState() {

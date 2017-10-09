@@ -130,7 +130,9 @@
 		<!--</mvc:interceptor>-->
 	<!--</mvc:interceptors>-->
 
-
+	<mvc:cors>
+		<mvc:mapping path="/**"/>
+	</mvc:cors>
 
 	<!--默认首页 -->
 	<mvc:view-controller path="/" view-name="/index"/>

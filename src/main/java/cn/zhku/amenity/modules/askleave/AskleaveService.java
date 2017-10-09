@@ -63,7 +63,10 @@ public class AskleaveService implements IBaseService<Askleave>{
         if (askleave.getYbRealname() != null){
             criteria.andYbRealnameLike("%"+askleave.getYbRealname()+"%");
         }
+        if (askleave.getId() != null){
+            criteria.andIdEqualTo(askleave.getId());
+        }
 
-        return askleaveMapper.selectByExample(askleaveExample);
+        return askleaveMapper.selectByExampleWithBLOBs(askleaveExample);
     }
 }

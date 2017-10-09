@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>主页</title>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="../css/navbar.css" />
+    <link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css" />
+
+</head>
+<body style="padding-top: 70px;" onload="onloading();">
+<!----======================导航栏部分============================-------->
+<div class="container">
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header home">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand " href="index.html">仲园后勤服务平台</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="home"><a href="index.html">主页</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">申请记录 <span class="caret"></span></a>
+                        <ul class="dropdown-menu" id="order">
+                            <!-- 下面两行代码是用来进行订单查找的,其中0代表查找未完成的订单(包括已受理的和正在配送的订单,这和数据库里面的订单代号不一样) -->
+                            <li class="a"><a href="leaveDetail.html?type=1">请假记录</a></li>
+                            <li class="b"><a href="leaveDetail.html?type=2">在校证明</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+    </nav>
+
+    <!--============================== 网页主体内容 ============================-->
+    <div id="main"><br />
+        <ul class="nav nav-tabs nav-pills nav-tabs-justified container">
+            <li class="active">
+                <a href="#tab1" data-toggle="tab">
+                    <h4>申请请假</h4></a>
+            </li>
+            <li>
+                <a href="#tab2" data-toggle="tab">
+                    <h4>申请在校证明</h4></a>
+            </li>
+        </ul><br />
+        <div class="tab-content active">
+            <div id="tab1" class="tab-pane fade in active">
+                <form id="bookLeave" >
+                    <div class="container img-rounded" id="thumbnail">
+                        <p><b>请填写请假信息</b></p>
+                        <p id="name">姓名: &nbsp;&nbsp;&nbsp;</p>
+                        <p id="stuid">学号:&nbsp;&nbsp;&nbsp;</p>
+                        <p id="classname">班级:&nbsp;&nbsp;&nbsp;</p>
+                        <p id="college">学院:&nbsp;&nbsp;&nbsp;</p>
+                        <p>请选择请假的时间:</p>
+                        <div class="am-g">
+                                起始日期:<br/>
+                                <p><input type="text" class="am-form-field" placeholder="请选择起始日期" id="my-start-2"/></p>
+                                结束日期:<br/>
+                                <p><input type="text" class="am-form-field" placeholder="请选择结束日期"id="my-end-2" /></p>
+                        </div>
+                        <label for="type">请假类型:</label>
+                        <select name="type" id="type">
+                            <option value="1">病假</option>
+                            <option value="2">事假</option>
+                        </select>
+                        <br/>
+                        <label for="reason">请假原因</label>
+                        <textarea class="form-control"id="reason" name="reason"rows="5"placeholder="请说明请假的具体原因和请假去向"></textarea>
+                        <input type="button"class="btn btn-default"  onclick="bookLeave();" value="提交申请"/>
+                    </div>
+                </form>
+            </div>
+            <div id="tab2"class="tab-pane fade">
+                <div class="container img-rounded " id="thumbnail "><br />
+                    <form role="form">
+                        <p><b>请填写申请信息</b></p><br/>
+                        <p id="yb_realname">姓名:&nbsp;&nbsp;&nbsp;</p>
+                        <p id="yb_studentid">学号:&nbsp;&nbsp;&nbsp;</p>
+                        <p id="yb_classname">班级:&nbsp;&nbsp;&nbsp;</p>
+                        <p id="yb_collegename">学院:&nbsp;&nbsp;&nbsp;</p>
+                        <input type="button"class="btn btn-default"  onclick="bookProof();" value="提交申请"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- /container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="../js/jquery.min.js" ></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script type="text/javascript" src="../js/bootstrap.min.js" ></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script type="text/javascript" src="../js/ie10-viewport-bug-workaround.js" ></script>
+
+<script type="text/javascript"src="../js/userOperate.js"></script>
+<script type="text/javascript" >
+    function  onloading() {
+        init();
+    }
+</script>
+<!--妹子框架依赖-->
+<script type="text/javascript" src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js" ></script>
+<!---验证日期输入是否准确---->
+<script>
+    $(function() {
+        var nowTemp = new Date();
+        var nowDay = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0).valueOf();
+        var nowMoth = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), 1, 0, 0, 0, 0).valueOf();
+        var nowYear = new Date(nowTemp.getFullYear(), 0, 1, 0, 0, 0, 0).valueOf();
+        var $myStart2 = $('#my-start-2');
+
+        var checkin = $myStart2.datepicker({
+            onRender: function(date, viewMode) {
+                // 默认 days 视图，与当前日期比较
+                var viewDate = nowDay;
+
+                switch (viewMode) {
+                    // moths 视图，与当前月份比较
+                    case 1:
+                        viewDate = nowMoth;
+                        break;
+                    // years 视图，与当前年份比较
+                    case 2:
+                        viewDate = nowYear;
+                        break;
+                }
+
+                return date.valueOf() < viewDate ? 'am-disabled' : '';
+            }
+        }).on('changeDate.datepicker.amui', function(ev) {
+            if (ev.date.valueOf() > checkout.date.valueOf()) {
+                var newDate = new Date(ev.date)
+                newDate.setDate(newDate.getDate() + 1);
+                checkout.setValue(newDate);
+            }
+            checkin.close();
+            $('#my-end-2')[0].focus();
+        }).data('amui.datepicker');
+
+        var checkout = $('#my-end-2').datepicker({
+            onRender: function(date, viewMode) {
+                var inTime = checkin.date;
+                var inDay = inTime.valueOf();
+                var inMoth = new Date(inTime.getFullYear(), inTime.getMonth(), 1, 0, 0, 0, 0).valueOf();
+                var inYear = new Date(inTime.getFullYear(), 0, 1, 0, 0, 0, 0).valueOf();
+
+                // 默认 days 视图，与当前日期比较
+                var viewDate = inDay;
+
+                switch (viewMode) {
+                    // moths 视图，与当前月份比较
+                    case 1:
+                        viewDate = inMoth;
+                        break;
+                    // years 视图，与当前年份比较
+                    case 2:
+                        viewDate = inYear;
+                        break;
+                }
+
+                return date.valueOf() <= viewDate ? 'am-disabled' : '';
+            }
+        }).on('changeDate.datepicker.amui', function(ev) {
+            checkout.close();
+        }).data('amui.datepicker');
+    });
+</script>
+</body>
+</html>

@@ -612,53 +612,63 @@ public class AskleaveExample {
             return (Criteria) this;
         }
 
-        public Criteria andYbEmployidEqualTo(Date value) {
-            addCriterionForJDBCDate("yb_employid =", value, "ybEmployid");
+        public Criteria andYbEmployidEqualTo(String value) {
+            addCriterion("yb_employid =", value, "ybEmployid");
             return (Criteria) this;
         }
 
-        public Criteria andYbEmployidNotEqualTo(Date value) {
-            addCriterionForJDBCDate("yb_employid <>", value, "ybEmployid");
+        public Criteria andYbEmployidNotEqualTo(String value) {
+            addCriterion("yb_employid <>", value, "ybEmployid");
             return (Criteria) this;
         }
 
-        public Criteria andYbEmployidGreaterThan(Date value) {
-            addCriterionForJDBCDate("yb_employid >", value, "ybEmployid");
+        public Criteria andYbEmployidGreaterThan(String value) {
+            addCriterion("yb_employid >", value, "ybEmployid");
             return (Criteria) this;
         }
 
-        public Criteria andYbEmployidGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("yb_employid >=", value, "ybEmployid");
+        public Criteria andYbEmployidGreaterThanOrEqualTo(String value) {
+            addCriterion("yb_employid >=", value, "ybEmployid");
             return (Criteria) this;
         }
 
-        public Criteria andYbEmployidLessThan(Date value) {
-            addCriterionForJDBCDate("yb_employid <", value, "ybEmployid");
+        public Criteria andYbEmployidLessThan(String value) {
+            addCriterion("yb_employid <", value, "ybEmployid");
             return (Criteria) this;
         }
 
-        public Criteria andYbEmployidLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("yb_employid <=", value, "ybEmployid");
+        public Criteria andYbEmployidLessThanOrEqualTo(String value) {
+            addCriterion("yb_employid <=", value, "ybEmployid");
             return (Criteria) this;
         }
 
-        public Criteria andYbEmployidIn(List<Date> values) {
-            addCriterionForJDBCDate("yb_employid in", values, "ybEmployid");
+        public Criteria andYbEmployidLike(String value) {
+            addCriterion("yb_employid like", value, "ybEmployid");
             return (Criteria) this;
         }
 
-        public Criteria andYbEmployidNotIn(List<Date> values) {
-            addCriterionForJDBCDate("yb_employid not in", values, "ybEmployid");
+        public Criteria andYbEmployidNotLike(String value) {
+            addCriterion("yb_employid not like", value, "ybEmployid");
             return (Criteria) this;
         }
 
-        public Criteria andYbEmployidBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("yb_employid between", value1, value2, "ybEmployid");
+        public Criteria andYbEmployidIn(List<String> values) {
+            addCriterion("yb_employid in", values, "ybEmployid");
             return (Criteria) this;
         }
 
-        public Criteria andYbEmployidNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("yb_employid not between", value1, value2, "ybEmployid");
+        public Criteria andYbEmployidNotIn(List<String> values) {
+            addCriterion("yb_employid not in", values, "ybEmployid");
+            return (Criteria) this;
+        }
+
+        public Criteria andYbEmployidBetween(String value1, String value2) {
+            addCriterion("yb_employid between", value1, value2, "ybEmployid");
+            return (Criteria) this;
+        }
+
+        public Criteria andYbEmployidNotBetween(String value1, String value2) {
+            addCriterion("yb_employid not between", value1, value2, "ybEmployid");
             return (Criteria) this;
         }
 

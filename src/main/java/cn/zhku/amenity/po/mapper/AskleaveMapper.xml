@@ -9,7 +9,7 @@
     <result column="yb_classname" property="ybClassname" jdbcType="VARCHAR" />
     <result column="yb_studentid" property="ybStudentid" jdbcType="VARCHAR" />
     <result column="leave_type" property="leaveType" jdbcType="INTEGER" />
-    <result column="yb_employid" property="ybEmployid" jdbcType="DATE" />
+    <result column="yb_employid" property="ybEmployid" jdbcType="VARCHAR" />
     <result column="state" property="state" jdbcType="INTEGER" />
     <result column="since_time" property="sinceTime" jdbcType="DATE" />
     <result column="end_time" property="endTime" jdbcType="DATE" />
@@ -139,7 +139,7 @@
       reason)
     values (#{id,jdbcType=INTEGER}, #{ybRealname,jdbcType=VARCHAR}, #{ybSchoolname,jdbcType=VARCHAR}, 
       #{ybCollegename,jdbcType=VARCHAR}, #{ybClassname,jdbcType=VARCHAR}, #{ybStudentid,jdbcType=VARCHAR}, 
-      #{leaveType,jdbcType=INTEGER}, #{ybEmployid,jdbcType=DATE}, #{state,jdbcType=INTEGER}, 
+      #{leaveType,jdbcType=INTEGER}, #{ybEmployid,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, 
       #{sinceTime,jdbcType=DATE}, #{endTime,jdbcType=DATE}, #{leaveTime,jdbcType=TIMESTAMP}, 
       #{reason,jdbcType=LONGVARCHAR})
   </insert>
@@ -209,7 +209,7 @@
         #{leaveType,jdbcType=INTEGER},
       </if>
       <if test="ybEmployid != null" >
-        #{ybEmployid,jdbcType=DATE},
+        #{ybEmployid,jdbcType=VARCHAR},
       </if>
       <if test="state != null" >
         #{state,jdbcType=INTEGER},
@@ -259,7 +259,7 @@
         leave_type = #{record.leaveType,jdbcType=INTEGER},
       </if>
       <if test="record.ybEmployid != null" >
-        yb_employid = #{record.ybEmployid,jdbcType=DATE},
+        yb_employid = #{record.ybEmployid,jdbcType=VARCHAR},
       </if>
       <if test="record.state != null" >
         state = #{record.state,jdbcType=INTEGER},
@@ -290,7 +290,7 @@
       yb_classname = #{record.ybClassname,jdbcType=VARCHAR},
       yb_studentid = #{record.ybStudentid,jdbcType=VARCHAR},
       leave_type = #{record.leaveType,jdbcType=INTEGER},
-      yb_employid = #{record.ybEmployid,jdbcType=DATE},
+      yb_employid = #{record.ybEmployid,jdbcType=VARCHAR},
       state = #{record.state,jdbcType=INTEGER},
       since_time = #{record.sinceTime,jdbcType=DATE},
       end_time = #{record.endTime,jdbcType=DATE},
@@ -309,7 +309,7 @@
       yb_classname = #{record.ybClassname,jdbcType=VARCHAR},
       yb_studentid = #{record.ybStudentid,jdbcType=VARCHAR},
       leave_type = #{record.leaveType,jdbcType=INTEGER},
-      yb_employid = #{record.ybEmployid,jdbcType=DATE},
+      yb_employid = #{record.ybEmployid,jdbcType=VARCHAR},
       state = #{record.state,jdbcType=INTEGER},
       since_time = #{record.sinceTime,jdbcType=DATE},
       end_time = #{record.endTime,jdbcType=DATE},
@@ -340,7 +340,7 @@
         leave_type = #{leaveType,jdbcType=INTEGER},
       </if>
       <if test="ybEmployid != null" >
-        yb_employid = #{ybEmployid,jdbcType=DATE},
+        yb_employid = #{ybEmployid,jdbcType=VARCHAR},
       </if>
       <if test="state != null" >
         state = #{state,jdbcType=INTEGER},
@@ -368,7 +368,7 @@
       yb_classname = #{ybClassname,jdbcType=VARCHAR},
       yb_studentid = #{ybStudentid,jdbcType=VARCHAR},
       leave_type = #{leaveType,jdbcType=INTEGER},
-      yb_employid = #{ybEmployid,jdbcType=DATE},
+      yb_employid = #{ybEmployid,jdbcType=VARCHAR},
       state = #{state,jdbcType=INTEGER},
       since_time = #{sinceTime,jdbcType=DATE},
       end_time = #{endTime,jdbcType=DATE},
@@ -384,7 +384,7 @@
       yb_classname = #{ybClassname,jdbcType=VARCHAR},
       yb_studentid = #{ybStudentid,jdbcType=VARCHAR},
       leave_type = #{leaveType,jdbcType=INTEGER},
-      yb_employid = #{ybEmployid,jdbcType=DATE},
+      yb_employid = #{ybEmployid,jdbcType=VARCHAR},
       state = #{state,jdbcType=INTEGER},
       since_time = #{sinceTime,jdbcType=DATE},
       end_time = #{endTime,jdbcType=DATE},

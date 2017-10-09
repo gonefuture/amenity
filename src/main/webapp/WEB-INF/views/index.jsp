@@ -10,14 +10,16 @@
 <head>
     <title>Title</title>
 </head>
-<body>
-    <button id="test1" onclick="impower();">学生授权</button><br /><br />
-    <button id="test2" onclick="teacherTest();">老师授权</button>
+<body style="background: url(img/bcgOfindex.jpg);background-repeat:no-repeat;background-size: cover;-webkit-background-size: cover;background-attachment: fixed;"onload="onloading();">
 
-    <p>
-    <h1><a href="https://oauth.yiban.cn/code/html?client_id=1c35e67ff21e20df&redirect_uri=http://localhost/amenity/auth&uffff=nnn">登录</a></h1>
-    </body>
-    <script type="text/javascript" src="/amenity/js/test.js" ></script>
-    <script type="text/javascript" src="/amenity/js/jquery.min.js" ></script>
+<p style="padding-right: 50%;padding-left: 50%;padding-top:20%;font-size:30px;color: white;">欢迎进入仲园便民应用</p>
+</body>
+<script type="text/javascript" src="/amenity/js/test.js" ></script>
+<script type="text/javascript" src="/amenity/js/jquery.min.js" ></script>
+<script type="text/javascript">
+    function onloading() {
+        window.location.href="https://oauth.yiban.cn/code/html?client_id=1c35e67ff21e20df&redirect_uri=http://localhost/amenity/auth&uffff=nnn";
+    }
+</script>
 </body>
 </html>

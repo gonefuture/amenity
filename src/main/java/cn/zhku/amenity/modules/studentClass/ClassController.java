@@ -1,6 +1,7 @@
 package cn.zhku.amenity.modules.studentClass;
 
 import cn.zhku.amenity.po.entity.Class;
+import cn.zhku.amenity.po.entity.ClassExample;
 import cn.zhku.amenity.po.mapper.ClassMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,11 @@ public class ClassController {
     ClassMapper classMapper;
     @RequestMapping("studentClass")
     @ResponseBody
-    public List<Class> studentClass() {
-        return classMapper.selectByExample(null);
+    public List<Class> studentClass(String pid) {
+        ClassExample classExample = new ClassExample();
+        ClassExample.Criteria criteria = classExample.createCriteria();
+        if (pid != null)
+            criteria.andPidEqualTo(Integer.valueOf(pid));
+        return classMapper.selectByExample(classExample);
     }
 }
